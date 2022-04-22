@@ -123,6 +123,28 @@ docker image build -t myubuntu:1 .
 docker run -it myubuntu:1
 ```
 
+## 17. Docker (in Hindi) : Dockerfile (Label, Run, Env, Workdir)
+```
+# ubuntu image
+FROM ubuntu:14.04
+
+# Label
+LABEL name="Manisha"
+LABEL email="manishakumari200307@gmail.com"
+
+# Environment Variables
+ENV NAME manisha
+ENV PASSWORD password
+
+# Understanding WORKDIR
+RUN pwd>/tmp/1stpwd.txt # /
+RUN cd /tmp 
+RUN pwd>/tmp/2ndpwd.txt # / (expecting /tmp here but it still /)
+WORKDIR /tmp
+RUN pwd>/tmp/3rdpwd.txt # /tmp
+
+# create image and run container using build commands given above
+```
 
 
 

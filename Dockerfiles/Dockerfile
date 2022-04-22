@@ -1,19 +1,10 @@
 FROM ubuntu:14.04
-RUN apt-get update &&  apt-get install -y tree && apt-get install -y git
-RUN touch /tmp/abc.txt
-RUN touch /tmp/1.txt
-RUN touch /tmp/2.txt
-RUN touch /tmp/3.txt
-RUN touch /tmp/4.txt
-RUN touch /tmp/5.txt
-RUN touch /tmp/6.txt
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
-RUN echo "Hi My Name is Manisha"
+LABEL name="Manisha"
+LABEL email="manishakumari200307@gmail.com"
+ENV NAME manisha
+ENV PASSWORD password
+RUN pwd>/tmp/1stpwd.txt
+RUN cd /tmp
+RUN pwd>/tmp/2ndpwd.txt
+WORKDIR /tmp
+RUN pwd>/tmp/3rdpwd.txt 
