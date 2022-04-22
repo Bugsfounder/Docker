@@ -230,8 +230,33 @@ docker image build -t myubunt:51 . # build image
 docker container run -P -itd myubunt:51 # build container using image (-P is important)
 ```
 
+21. Docker (in Hindi) : Dockerfile (Entrypoint)
+```
+# entry point is just like CMD
+
+FROM ubuntu:14.04
+
+# Environment Variables
+ENV NAME manisha
+ENV PASS password123
+
+# Adding RUN as required
+RUN mkdir -p /var/run/sshd
+RUN apt-get update
+RUN apt-get install -y python tree
+
+# Copy .sh file from machine to container /tmp/
+COPY test.sh /tmp/
+
+# ENTRYPOINT HERE
+ENTRYPOINT ["/tmp/test.sh"]
+```
+
 # Problems While learning
 ```
 1. when i start the nginx container is hosted on port 80 at ip 172.17.0.2 i got it throw inspecting container. ip eg:172.17.0.2 when i send request to the server using browser it showing ``This site can’t be reached.``.
+
+2. docker: Error response from daemon: OCI runtime create failed: container_linux.go:380: starting container process caused: exec: "/tmp/test.sh": permission denied: unknown.
+ERRO[0000] error waiting for container: context canceled 
 ```
 
