@@ -145,7 +145,50 @@ RUN pwd>/tmp/3rdpwd.txt # /tmp
 
 # create image and run container using build commands given above
 ```
+## 18. Docker (in Hindi) : Dockerfile (add, copy, user) difference between copy and add in docker file
+```
+# ubuntu image
+FROM ubuntu:14.04
 
+# Label
+LABEL name="Manisha"
+LABEL email="manishakumari200307@gmail.com"
+
+# Environment Variables
+ENV NAME manisha
+ENV PASSWORD password
+
+# Understanding WORKDIR
+RUN pwd>/tmp/1stpwd.txt # /
+RUN cd /tmp 
+RUN pwd>/tmp/2ndpwd.txt # / (expecting /tmp here but it still /)
+WORKDIR /tmp
+RUN pwd>/tmp/3rdpwd.txt # /tmp
+
+# install required things
+RUN apt-get update && apt-get install -y openssh-server && apt-get install -y python
+
+# adding user manisha
+RUN useradd -d /home/manisha -g root -G sudo -m -p $(echo "$PASSWORD" | openssl passwd -1 -stdin) $NAME
+
+# Understanding Switching User
+RUN whoami > /tmp/1stwhoami.txt # root
+
+# changing user
+USER $NAME
+
+RUN whoami > /tmp/2ndwhoami.txt # manisha
+
+# creating project dir inside tmp dir
+RUN mkdir -p /tmp/project
+
+# COPY cppTutorial /tmp/project/ # copy all files inside cppTutorial to /tmp/project/ dir
+# ADD cppTutorial /tmp/project/ # add all files inside cppTutorial to /tmp/project/ dir 
+# COPY External_test_data.tar.gz /tmp/project/ # copy the tar file as it is to project dir
+ADD External_test_data.tar.gz /tmp/project/ # extract the tar file automatically and add all files of .tar.gz to project dir inside container
+
+# create image and run container using build commands given above
+```
 
 
 
