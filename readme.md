@@ -190,7 +190,45 @@ ADD External_test_data.tar.gz /tmp/project/ # extract the tar file automatically
 # create image and run container using build commands given above
 ```
 
+## 19. Docker ( In hindi) : Dockerfile ( CMD )
+```
+# a docker file can containe only one CMD command.
+# if more than one CMD has been added then last one is execute.
+# CMD is execute at the end.
 
+Syntax/Code example:
+CMD ["python"]
+```
+
+## 20. Docker ( In hindi) : Dockerfile ( Expose and create a SSH container using dockerfile )
+```
+FROM ubuntu:16.04
+
+# creating username and password as environment variable
+ENV NAME manisha
+ENV PASS password123
+
+# cteating sshd dir
+RUN mkdir -p /var/run/sshd
+
+# installing required things
+RUN apt-get update
+RUN apt-get install -y openssh-server
+
+# creating user called manisha
+RUN useradd -d /home/manisha -g root -G sudo -m -p $(echo "$PASS" | openssl passwd -1 -stdin) $NAME
+
+# expose ports
+# EXPOSE 22 
+EXPOSE 22 80 4444 8000
+
+# CMD command 
+CMD ["/usr/sbin/sshd", "-D"]
+
+# build commands:
+docker image build -t myubunt:51 . # build image
+docker container run -P -itd myubunt:51 # build container using image (-P is important)
+```
 
 # Problems While learning
 ```
