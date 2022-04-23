@@ -343,6 +343,12 @@ docker network connect <network_name> <container_id>
 docker network disconnect <network_name> <container_id>
 ```
 
+## 32. Docker (in Hindi) : Docker Networking (Remove, Proun)
+```
+docker network rm <network_name> 
+docker network prune # delete all unused networks 
+```
+
 # keyboard hortcuts 
 ```
 # leave container running and come outside docker
