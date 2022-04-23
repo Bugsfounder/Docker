@@ -310,6 +310,17 @@ docker volume rm <volume_name>
 docker volume rm <volume_name1> <volume_name2> <volume_name3>
 ```
 
+## 
+25. Docker (in Hindi) : Docker Bind mount
+```
+# create folder that you want to share eg: /home/jocefyneroot/bind and create files inside this folder and see inside container file is in sync with system machine
+# always give full path of the folder (important)
+docker container run -it -v /home/jocefyneroot/bind:/tmp/test/ ubuntu:14.04 bash
+
+# you can also use:
+docker container run -it --mount type=bind,source=$(pwd),target=/tmp/test/ ubuntu:14.04 bash
+```
+
 # Problems While learning
 ```
 1. when i start the nginx container is hosted on port 80 at ip 172.17.0.2 i got it throw inspecting container. ip eg:172.17.0.2 when i send request to the server using browser it showing ``This site can’t be reached.``.
