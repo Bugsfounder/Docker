@@ -320,6 +320,11 @@ docker container run -it -v /home/jocefyneroot/bind:/tmp/test/ ubuntu:14.04 bash
 # you can also use:
 docker container run -it --mount type=bind,source=$(pwd),target=/tmp/test/ ubuntu:14.04 bash
 ```
+26. Docker (in Hindi) : Docker Networking ( Bridge Network Overview )
+```
+# Basic Commands
+docker network ls
+```
 
 # Problems While learning
 ```
