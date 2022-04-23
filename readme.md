@@ -349,7 +349,51 @@ docker network rm <network_name>
 docker network prune # delete all unused networks 
 ```
 
-# keyboard hortcuts 
+## 33. Docker (in Hindi) : Docker Registry/Repository (Insecure)
+```
+docker pull registry
+docker container run -d -p 5000:5000 --name simple_registory registry
+
+# create image
+docker image tag ubuntu:14.04 127.0.0.1:5000/ubuntu:14.04
+
+# push
+docker image push 127.0.0.1:5000/ubuntu:14.04
+
+# pull
+docker image pull 127.0.0.1:5000/ubuntu:14.04
+```
+
+## 34. Docker (in Hindi) : Docker Registry/Repository (secure)
+```
+# creating ssh key
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/
+domain.crt
+
+#leave everything blank keep pressing enter if common name enter:
+repo.docker.local
+
+cd /etc/docker/
+sudo mkdir certs.d
+cd certs.d/
+sudo mkdir repo.docker.local:5000
+sudo cp certs/domain.crt /etc/docker/certs.d/repo.docker.local\:5000/ca.crt
+
+
+# run this command
+docker container run -d -p 5000:5000 --name source_registry -v $(pwd)/certs/:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry
+
+sudo vi /etc/hosts
+# add this line 
+<ipaddress>   repo.docker.local
+
+
+docker image tag mongo repo.docker.local:5000/mongo
+docker image push repo.docker.local:5000/mongo
+
+```
+
+## keyboard hortcuts 
 ```
 # leave container running and come outside docker
 ctrl + q or ctrl + p
