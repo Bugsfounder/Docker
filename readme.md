@@ -310,8 +310,7 @@ docker volume rm <volume_name>
 docker volume rm <volume_name1> <volume_name2> <volume_name3>
 ```
 
-## 
-25. Docker (in Hindi) : Docker Bind mount
+## 25. Docker (in Hindi) : Docker Bind mount
 ```
 # create folder that you want to share eg: /home/jocefyneroot/bind and create files inside this folder and see inside container file is in sync with system machine
 # always give full path of the folder (important)
@@ -324,6 +323,30 @@ docker container run -it --mount type=bind,source=$(pwd),target=/tmp/test/ ubunt
 ```
 # Basic Commands
 docker network ls
+```
+
+27. Docker (in Hindi) : Docker Networking (Bridge Network)
+```
+# docker network create <options> <driver> <name>
+docker network create -d bridge test
+
+# attaching network to a container
+docker container run -it --network=<name> ubuntu:14.04 bash
+```
+
+## 31. Docker (in Hindi) : Docker Networking (Connect, Disconnect)
+```
+# connect
+docker network connect <network_name> <container_id>
+
+# disconnect
+docker network disconnect <network_name> <container_id>
+```
+
+# keyboard hortcuts 
+```
+# leave container running and come outside docker
+ctrl + q or ctrl + p
 ```
 
 # Problems While learning
