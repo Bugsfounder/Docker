@@ -304,6 +304,10 @@ docker container run -itd -v <volume_name>:/var/lib/mysql mysql
 docker volume basic commands --> commandLine
 docker volume ls
 docker volume prune 
+docker volume create <volume_name>
+docker volume inspect <volume_name>
+docker volume rm <volume_name>
+docker volume rm <volume_name1> <volume_name2> <volume_name3>
 ```
 
 # Problems While learning
