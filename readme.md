@@ -252,6 +252,60 @@ COPY test.sh /tmp/
 ENTRYPOINT ["/tmp/test.sh"]
 ```
 
+```
+# pull mysql database from docker hub
+docker pull mysql
+
+# inspecting mysql image and check the volums path
+docker image inspect mysql:latest | less
+'''
+ "Volumes": {
+                "/var/lib/mysql": {}
+            },
+'''
+
+# creating container using mysql image
+docker container  run -d --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+
+
+cd /home/jocefyneroot/.local/share/docker/volumes/<volume_id>/_data
+
+# executing container's terminal
+docker container exec -it <container_id> bash
+
+inside docker container create some database
+"""
+mysql
+show databases;
+create database dbName
+"""
+
+# remote the container
+docker container rm -f <container_id>
+
+# again creating the container 
+docker container run -d --name mysql1 -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+
+# executing container's terminal
+docker container exec -it <container_id> bash
+
+inside docker container create some database
+"""
+mysql
+show databases;
+create database dbName
+# you see all databases that you created is not here all databases was deleted
+"""
+
+# creating a container specifying volume name
+docker container run -itd -v <volume_name>:/var/lib/mysql mysql 
+
+
+docker volume basic commands --> commandLine
+docker volume ls
+docker volume prune 
+```
+
 # Problems While learning
 ```
 1. when i start the nginx container is hosted on port 80 at ip 172.17.0.2 i got it throw inspecting container. ip eg:172.17.0.2 when i send request to the server using browser it showing ``This site can’t be reached.``.
