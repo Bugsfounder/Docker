@@ -9,6 +9,28 @@ services:
     image: python-redis-2
     ports:
       - "5000:5000"
+    networks:
+      - appnetwork
     
   redis:
     image: "redis:alpine"
+    volumes:
+      - myredisdata:/data
+    networks:
+      - appnetwork
+
+  redis2:
+    image: "redis:alpine"
+    volumes:
+      - myredisdata2:/data
+    networks:
+      - appnetwork2
+
+networks:
+  appnetwork:
+  appnetwork2: 
+
+volumes:
+  myredisdata:
+  myredisdata2:
+    

@@ -489,7 +489,6 @@ docker-compose restart
 docker-compose pull
 docker-compose scale webapp1=4 webapp2=2
 docker-compose top
-
 ```
 
 ## keyboard hortcuts 
