@@ -444,7 +444,7 @@ services:
       - "8002:80"
 ```
 
-## 4. Docker Compose (In Hindi) : Basic Command ( create, start, stop, rm, up, down, ps, pause, unpause)
+## 4. Docker Compose (In Hindi) : Basic Command ( create, start, stop, rm, up, down, ps, pause, unpause, Kill, exec, run, help, log)
 ```
 docker-compose create # creat has been depricated
 docker-compose rm
@@ -471,9 +471,24 @@ docker-compose ps
 docker-compose pause
 
 # unpause containers
-docker-compose pause
+docker-compose unpause
 
+# kill
+docker-compose kill
 
+# see which port of container mapping which port of machine
+# docker-compose port <container_name> <port>
+docker-compose port webapp1 80
+
+# see logs
+docker-compose logs
+
+docker-compose exec webapp1 ls
+docker-compose run webapp1 ls
+docker-compose restart
+docker-compose pull
+docker-compose scale webapp1=4 webapp2=2
+docker-compose top
 
 ```
 
