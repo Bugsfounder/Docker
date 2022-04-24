@@ -393,6 +393,57 @@ docker image push repo.docker.local:5000/mongo
 
 ```
 
+## 3. Docker Compose (in Hindi) : Create First docker-compose.yml file
+```
+# commands
+docker-compose up -d
+docker-compose down
+
+# if you have a docker-compose file with another name instead of docker-compose.yml
+# docker-compose -f <file_name> up -d
+docker-compose -f docker-compose2.yml up -d
+docker-compose -f docker-compose2.yml down
+
+
+# json file
+docker-compose  -f docker-compose.json up -d
+
+```
+#### docker-compose.json
+```
+{
+  "version": "3",
+  "services": {
+    "webapp1": {
+      "image": "nginx",
+      "ports": [
+        "8000:80"
+      ]
+    },
+    "webapp2": {
+      "image": "nginx",
+      "ports": [
+        "8002:80"
+      ]
+    }
+  }
+}
+```
+
+#### docker-compose.yml
+```
+version: '3'
+services:
+  webapp1:
+    image: nginx
+    ports:
+      - "8000:80"
+  webapp2:
+    image: nginx
+    ports:
+      - "8002:80"
+```
+
 ## keyboard hortcuts 
 ```
 # leave container running and come outside docker
