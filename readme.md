@@ -492,8 +492,6 @@ docker-compose top
 
 ```
 
-## 8. Docker Compose (in Hindi) : Bind Mount
-
 ## keyboard hortcuts 
 ```
 # leave container running and come outside docker
