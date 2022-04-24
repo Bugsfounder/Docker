@@ -1,9 +1,14 @@
 version: '3'
 services:
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PYTHON_VERSION=3.4-alpine
+    image: python-redis-2
     ports:
       - "5000:5000"
-    image: 'bugsfounder/mypythonimage'
+    
   redis:
     image: "redis:alpine"
