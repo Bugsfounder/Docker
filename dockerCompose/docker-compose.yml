@@ -1,6 +1,8 @@
 version: '3'
 services:
-  webapp1:
-    image: nginx
-  webapp2:
-    image: nginx
+  frontent:
+    image: 'httpd:alpine'
+    ports:
+      - "8000:80"
+    volumes:
+      - ./out/:/usr/local/apache2/htdocs/
