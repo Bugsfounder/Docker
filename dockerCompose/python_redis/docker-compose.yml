@@ -9,4 +9,4 @@ services:
       - Add=Bihar
   
   redis:
-    image: "redis:alpine"
+    image: "redis:alpine" 
